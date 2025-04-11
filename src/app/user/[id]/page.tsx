@@ -3,7 +3,11 @@ import { notFound } from "next/navigation";
 import UserDetails from "@/components/user-details";
 import { UserDetailsSkeleton } from "@/components/user-details-skeleton";
 
-export default async function UserPage({ params }: { params: { id: string } }) {
+export default async function UserPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const resolvedParams = await Promise.resolve(params);
   const userId = Number.parseInt(resolvedParams.id);
 
